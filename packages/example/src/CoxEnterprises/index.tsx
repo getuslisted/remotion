@@ -53,14 +53,21 @@ const GridLines: React.FC = () => {
 
 	return (
 		<svg
-			style={{position: 'absolute', top: 0, left: 0, width, height, opacity: 0.06}}
+			style={{
+				position: 'absolute',
+				top: 0,
+				left: 0,
+				width,
+				height,
+				opacity: 0.06,
+			}}
 		>
 			{Array.from({length: 12}).map((_, i) => (
 				<line
 					key={`v${i}`}
 					x1={(width / 12) * i}
 					y1={0}
-					x2={(width / 12) * i + (frame * 0.5) % width}
+					x2={(width / 12) * i + ((frame * 0.5) % width)}
 					y2={height}
 					stroke={BRAND_GREEN}
 					strokeWidth={1}
@@ -85,7 +92,11 @@ const GridLines: React.FC = () => {
 const AccentBar: React.FC<{delay: number}> = ({delay}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
-	const progress = spring({frame: frame - delay, fps, config: {damping: 14, stiffness: 120}});
+	const progress = spring({
+		frame: frame - delay,
+		fps,
+		config: {damping: 14, stiffness: 120},
+	});
 	const width = interpolate(progress, [0, 1], [0, 120]);
 	return (
 		<div
@@ -107,12 +118,20 @@ const IntroScene: React.FC = () => {
 	const {fps} = useVideoConfig();
 
 	const logoScale = spring({frame, fps, config: {damping: 12, stiffness: 80}});
-	const logoOpacity = interpolate(frame, [0, 20], [0, 1], {extrapolateRight: 'clamp'});
+	const logoOpacity = interpolate(frame, [0, 20], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
 
-	const taglineOpacity = interpolate(frame, [30, 50], [0, 1], {extrapolateRight: 'clamp'});
-	const taglineY = interpolate(frame, [30, 50], [20, 0], {extrapolateRight: 'clamp'});
+	const taglineOpacity = interpolate(frame, [30, 50], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
+	const taglineY = interpolate(frame, [30, 50], [20, 0], {
+		extrapolateRight: 'clamp',
+	});
 
-	const subtitleOpacity = interpolate(frame, [50, 70], [0, 1], {extrapolateRight: 'clamp'});
+	const subtitleOpacity = interpolate(frame, [50, 70], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
 
 	return (
 		<AbsoluteFill
@@ -217,7 +236,10 @@ const ServiceCard: React.FC<{
 		config: {damping: 14, stiffness: 120},
 	});
 
-	const opacity = interpolate(frame - delay, [0, 20], [0, 1], {extrapolateRight: 'clamp', extrapolateLeft: 'clamp'});
+	const opacity = interpolate(frame - delay, [0, 20], [0, 1], {
+		extrapolateRight: 'clamp',
+		extrapolateLeft: 'clamp',
+	});
 	const y = interpolate(progress, [0, 1], [60, 0]);
 	const scale = interpolate(progress, [0, 1], [0.85, 1]);
 
@@ -267,8 +289,14 @@ const ServicesScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
-	const titleProgress = spring({frame, fps, config: {damping: 12, stiffness: 80}});
-	const titleOpacity = interpolate(frame, [0, 20], [0, 1], {extrapolateRight: 'clamp'});
+	const titleProgress = spring({
+		frame,
+		fps,
+		config: {damping: 12, stiffness: 80},
+	});
+	const titleOpacity = interpolate(frame, [0, 20], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
 	const titleY = interpolate(titleProgress, [0, 1], [40, 0]);
 
 	return (
@@ -308,7 +336,9 @@ const ServicesScene: React.FC = () => {
 				</div>
 				<div
 					style={{
-						width: interpolate(frame, [10, 40], [0, 200], {extrapolateRight: 'clamp'}),
+						width: interpolate(frame, [10, 40], [0, 200], {
+							extrapolateRight: 'clamp',
+						}),
 						height: 5,
 						backgroundColor: BRAND_GREEN,
 						borderRadius: 3,
@@ -326,7 +356,12 @@ const ServicesScene: React.FC = () => {
 				}}
 			>
 				{services.map((service, i) => (
-					<ServiceCard key={service.title} service={service} index={i} startFrame={20} />
+					<ServiceCard
+						key={service.title}
+						service={service}
+						index={i}
+						startFrame={20}
+					/>
 				))}
 			</div>
 		</AbsoluteFill>
@@ -338,15 +373,30 @@ const OutroScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
-	const bgScale = interpolate(frame, [0, 90], [1.05, 1], {extrapolateRight: 'clamp'});
+	const bgScale = interpolate(frame, [0, 90], [1.05, 1], {
+		extrapolateRight: 'clamp',
+	});
 
-	const logoOpacity = interpolate(frame, [10, 35], [0, 1], {extrapolateRight: 'clamp'});
-	const logoScale = spring({frame: frame - 10, fps, config: {damping: 14, stiffness: 100}});
+	const logoOpacity = interpolate(frame, [10, 35], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
+	const logoScale = spring({
+		frame: frame - 10,
+		fps,
+		config: {damping: 14, stiffness: 100},
+	});
 
-	const ctaOpacity = interpolate(frame, [35, 55], [0, 1], {extrapolateRight: 'clamp'});
-	const ctaY = interpolate(frame, [35, 55], [20, 0], {extrapolateRight: 'clamp', extrapolateLeft: 'clamp'});
+	const ctaOpacity = interpolate(frame, [35, 55], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
+	const ctaY = interpolate(frame, [35, 55], [20, 0], {
+		extrapolateRight: 'clamp',
+		extrapolateLeft: 'clamp',
+	});
 
-	const urlOpacity = interpolate(frame, [55, 75], [0, 1], {extrapolateRight: 'clamp'});
+	const urlOpacity = interpolate(frame, [55, 75], [0, 1], {
+		extrapolateRight: 'clamp',
+	});
 
 	const pulseScale = 1 + 0.015 * Math.sin((frame / 15) * Math.PI);
 
