@@ -100,6 +100,7 @@ import {Greenscreen} from './VideoOnCanvas/greenscreen';
 import {VideoParser} from './VideoParser';
 import {VideoSpeed} from './VideoSpeed';
 import {VideoTesting} from './VideoTesting';
+import {CoxEnterprises} from './CoxEnterprises';
 import {WarpDemoOuter} from './WarpText';
 import {WarpDemo2} from './WarpText/demo2';
 import {WatchStaticDemo} from './watch-static';
@@ -1909,6 +1910,14 @@ export const Index: React.FC = () => {
 				height={720}
 				fps={30}
 				durationInFrames={2 * 60 * 30}
+			/>
+			<Composition
+				id="CoxEnterprises"
+				component={CoxEnterprises}
+				width={1920}
+				height={1080}
+				fps={30}
+				durationInFrames={1800}
 			/>
 		</>
 	);
