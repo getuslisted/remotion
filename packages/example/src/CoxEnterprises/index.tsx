@@ -1,13 +1,60 @@
 import React from 'react';
 import {
 	AbsoluteFill,
-	Img,
 	Sequence,
 	interpolate,
 	spring,
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+
+// Inline SVG logo — no network required during render
+const CoxLogo: React.FC<{width?: number}> = ({width = 400}) => {
+	const height = width * 0.32;
+	return (
+		<svg
+			viewBox="0 0 500 160"
+			width={width}
+			height={height}
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			{/* Green shield/leaf icon */}
+			<path
+				d="M40 10 C40 10 10 30 10 70 C10 110 40 140 40 140 C40 140 70 110 70 70 C70 30 40 10 40 10Z"
+				fill={BRAND_GREEN}
+			/>
+			<path
+				d="M40 35 C40 35 25 50 25 75 C25 100 40 118 40 118 C40 118 55 100 55 75 C55 50 40 35 40 35Z"
+				fill="#000000"
+				opacity="0.3"
+			/>
+			{/* COX text */}
+			<text
+				x="85"
+				y="105"
+				fontFamily="Arial Black, Arial, sans-serif"
+				fontWeight="900"
+				fontSize="90"
+				fill={WHITE}
+				letterSpacing="-2"
+			>
+				COX
+			</text>
+			{/* ENTERPRISES LLC text */}
+			<text
+				x="87"
+				y="140"
+				fontFamily="Arial, sans-serif"
+				fontWeight="400"
+				fontSize="28"
+				fill={BRAND_GREEN}
+				letterSpacing="6"
+			>
+				ENTERPRISES LLC
+			</text>
+		</svg>
+	);
+};
 
 const BRAND_GREEN = '#3FAF4D';
 const BLACK = '#000000';
@@ -167,10 +214,7 @@ const IntroScene: React.FC = () => {
 					zIndex: 2,
 				}}
 			>
-				<Img
-					src="https://www.coxenterprisesllc.com/wp-content/uploads/2024/05/Cox-Enterprises-Logo.png"
-					style={{width: 480, objectFit: 'contain'}}
-				/>
+				<CoxLogo width={480} />
 			</div>
 
 			{/* Tagline */}
@@ -454,10 +498,7 @@ const OutroScene: React.FC = () => {
 					zIndex: 2,
 				}}
 			>
-				<Img
-					src="https://www.coxenterprisesllc.com/wp-content/uploads/2024/05/Cox-Enterprises-Logo.png"
-					style={{width: 400, objectFit: 'contain'}}
-				/>
+				<CoxLogo width={400} />
 			</div>
 
 			{/* CTA text */}
