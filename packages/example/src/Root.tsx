@@ -21,6 +21,7 @@ import {ColorInterpolation} from './ColorInterpolation';
 import {ComplexSounds} from './ComplexSounds';
 import {MyCtx, WrappedInContext} from './Context';
 import CorruptVideo from './CorruptVideo';
+import {CoxEnterprises} from './CoxEnterprises';
 import {CssLoaderTest} from './CssLoaderTest';
 import {DarkModeTest} from './DarkModeTest';
 import {DecoderDemo} from './DecoderDemo';
@@ -81,8 +82,8 @@ import {
 } from './StudioApis/SaveDefaultProps';
 import {TriggerCalculateMetadata} from './StudioApis/TriggerCalculateMetadata';
 import {WriteStaticFile} from './StudioApis/WriteStaticFile';
-import {SubtitleArtifact} from './SubtitleArtifact/SubtitleArtifact';
 import './style.css';
+import {SubtitleArtifact} from './SubtitleArtifact/SubtitleArtifact';
 import {SvgFilter} from './SvgFilter';
 import {Tailwind} from './Tailwind';
 import {TenFrameTester} from './TenFrameTester';
@@ -1909,6 +1910,14 @@ export const Index: React.FC = () => {
 				height={720}
 				fps={30}
 				durationInFrames={2 * 60 * 30}
+			/>
+			<Composition
+				id="CoxEnterprises"
+				component={CoxEnterprises}
+				width={1920}
+				height={1080}
+				fps={30}
+				durationInFrames={1800}
 			/>
 		</>
 	);
